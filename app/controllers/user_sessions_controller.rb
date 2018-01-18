@@ -16,4 +16,6 @@ class UserSessionsController < ApplicationController
     logout
     redirect_to(:users, notice: 'logged out!')
   end
+
+  if @user = login(params[:email], params[:password], params[:remember])
 end
