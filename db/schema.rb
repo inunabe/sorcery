@@ -11,23 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118083259) do
+ActiveRecord::Schema.define(version: 20180119002230) do
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                        limit: 255, null: false
-    t.string   "crypted_password",             limit: 255
-    t.string   "salt",                         limit: 255
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.string   "remember_me_token",            limit: 255
+    t.string   "email",                           limit: 255, null: false
+    t.string   "crypted_password",                limit: 255
+    t.string   "salt",                            limit: 255
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.string   "remember_me_token",               limit: 255
     t.datetime "remember_me_token_expires_at"
-    t.string   "activation_state",             limit: 255
-    t.string   "activation_token",             limit: 255
+    t.string   "activation_state",                limit: 255
+    t.string   "activation_token",                limit: 255
     t.datetime "activation_token_expires_at"
+    t.string   "reset_password_token",            limit: 255
+    t.datetime "reset_password_token_expires_at"
+    t.datetime "reset_password_email_sent_at"
   end
 
   add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
 
 end
